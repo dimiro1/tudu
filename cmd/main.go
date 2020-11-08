@@ -47,6 +47,9 @@ func main() {
 		router.Handle("/todos", httpHandler).Methods("GET")
 	}
 
+	router.Handle("/live", api.LiveProbe())
+	router.Handle("/ready", api.ReadyProbe())
+
 	// This is the only way to safely start a http server
 	server := &http.Server{
 		Addr:         address,
